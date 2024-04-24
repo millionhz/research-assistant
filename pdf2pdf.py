@@ -1,9 +1,9 @@
-
+import os
 from pinecone import Pinecone
 from langchain_community.document_loaders import PyMuPDFLoader
 from sentence_transformers import SentenceTransformer
 
-PINE_CONE_API = ''
+PINE_CONE_API = os.getenv('ABSTRACTS_PINECONE_API_KEY')
 TOP_K = 5
 MODEL_NAME = 'mixedbread-ai/mxbai-embed-large-v1'
 BATCH_SIZE = 1
