@@ -100,8 +100,6 @@ def add_paper_to_kb(arxiv_id):
 
     upload(docuemnt)
 
-# add_paper_to_kb("1706.03762")
-
 
 def cli_chat():
     print("Welcome to the CLI Chat. Type 'exit' to quit.")
