@@ -9,6 +9,7 @@ from canopy.models.data_models import UserMessage, AssistantMessage
 import arxiv
 import requests
 from langchain_community.document_loaders import PyMuPDFLoader
+from pinecone import ServerlessSpec
 
 PINECONE_API = os.getenv("PINECONE_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -22,8 +23,13 @@ INDEX_NAME = "knowledge-base"
 
 kb = KnowledgeBase(index_name=INDEX_NAME)
 
+spec = ServerlessSpec(
+    cloud="aws",
+    region="us-east-1"
+)
+
 if not any(name.endswith(INDEX_NAME) for name in list_canopy_indexes()):
-    kb.create_canopy_index()
+    kb.create_canopy_index(spec)
 
 kb.connect()
 
@@ -85,10 +91,10 @@ def add_paper_to_kb(arxiv_id):
 
     # create a canopy document
     document = Document(
-        id = arxiv_id,
-        source = link,
-        text = content,
-        metadata = {
+        id=arxiv_id,
+        source=link,
+        text=content,
+        metadata={
             "title": title,
             "authors": ",".join(authors)
         }
@@ -102,6 +108,8 @@ def clear_kb():
     Use this function to clear the pinecone index.
     '''
     kb.delete_index()
+    kb.create_canopy_index(spec)
+
 
 def cli_chat():
     print("Welcome to the CLI Chat. Type 'exit' to quit.")
