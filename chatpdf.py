@@ -8,7 +8,7 @@ from canopy.context_engine import ContextEngine
 from canopy.models.data_models import UserMessage, AssistantMessage
 import arxiv
 import requests
-from langchain_community.document_loaders import PyMuPDFLoader)
+from langchain_community.document_loaders import PyMuPDFLoader
 
 PINECONE_API = os.getenv("PINECONE_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
