@@ -8,11 +8,7 @@ from canopy.context_engine import ContextEngine
 from canopy.models.data_models import UserMessage, AssistantMessage
 import arxiv
 import requests
-from langchain_community.document_loaders import PyMuPDFLoader
-
-
-from dotenv import load_dotenv
-load_dotenv()
+from langchain_community.document_loaders import PyMuPDFLoader)
 
 PINECONE_API = os.getenv("PINECONE_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -89,10 +85,10 @@ def add_paper_to_kb(arxiv_id):
 
     # create a canopy document
     document = Document(
-        id=arxiv_id,
-        source=link,
-        text=content,
-        metadata={
+        id = arxiv_id,
+        source = link,
+        text = content,
+        metadata = {
             "title": title,
             "authors": ",".join(authors)
         }
