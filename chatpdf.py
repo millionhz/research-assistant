@@ -88,7 +88,7 @@ def add_paper_to_kb(arxiv_id):
     title, authors, content, link = fetch_arxiv_paper(arxiv_id)
 
     # create a canopy document
-    docuemnt = Document(
+    document = Document(
         id=arxiv_id,
         source=link,
         text=content,
@@ -98,7 +98,7 @@ def add_paper_to_kb(arxiv_id):
         }
     )
 
-    upload(docuemnt)
+    upload(document)
 
 
 def cli_chat():
