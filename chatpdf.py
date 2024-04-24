@@ -97,6 +97,12 @@ def add_paper_to_kb(arxiv_id):
     upload(document)
 
 
+def clear_kb():
+    '''
+    Use this function to clear the pinecone index.
+    '''
+    kb.delete_index()
+
 def cli_chat():
     print("Welcome to the CLI Chat. Type 'exit' to quit.")
     history = []
