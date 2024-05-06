@@ -49,8 +49,8 @@ def extract_text(FILE_PATH):
         return ""
     start_index = text.find('Abstract')
     end_index = text.find('Introduction')
-    extracted_text = ""
-    if start_index != -1 and end_index != -1:
+
+    if start_index != -1 and end_index != -1 and start_index < end_index:
         extracted_text = text[start_index:end_index]
     elif end_index != -1:
         extracted_text = text[:end_index]
